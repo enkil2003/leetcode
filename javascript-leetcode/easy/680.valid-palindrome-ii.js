@@ -9,27 +9,9 @@
  * @param {string} s
  * @return {boolean}
  */
-var validPalindrome = function (s) {
-  let l = 0;
-  let r = s.length - 1;
-  let deleted = 0;
+const helper = (l, r, s) => {
   while (l < r) {
-    let leftLetter = s[l];
-    let rightLetter = s[r];
-
-    if (leftLetter !== rightLetter) {
-      deleted++;
-      if (s[l + 1] === rightLetter) {
-        l--;
-        r--;
-      }
-      if (s[r - 1] === leftLetter) {
-        r++;
-        l++;
-      }
-    }
-
-    if (deleted > 1) {
+    if (s[l] !== s[r]) {
       return false;
     }
     l++;
@@ -37,7 +19,17 @@ var validPalindrome = function (s) {
   }
   return true;
 };
-validPalindrome("abc");
-// l r
-// abc
+var validPalindrome = function (s) {
+  let l = 0;
+  let r = s.length - 1;
+  while (l < r) {
+    if (s[l] !== s[r]) {
+      return helper(l + 1, r, s) || helper(l, r - 1, s);
+    }
+    l++;
+    r--;
+  }
+  return true;
+};
+validPalindrome("abca");
 // @lc code=end
