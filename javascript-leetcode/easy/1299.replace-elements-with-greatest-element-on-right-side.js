@@ -9,7 +9,7 @@
  * @param {number[]} arr
  * @return {number[]}
  */
-var replaceElements = function (arr) {
+var replaceElements2 = function (arr) {
   let rightMax = -1;
 
   for (let i = arr.length - 1; i >= 0; i--) {
@@ -18,6 +18,16 @@ var replaceElements = function (arr) {
     rightMax = newMax;
   }
 
+  return arr;
+};
+
+var replaceElements = function (arr) {
+  let rightMax = -1;
+  for (let i = arr.length - 1; i >= 0; i--) {
+    let newMax = Math.max(rightMax, arr[i]);
+    arr[i] = rightMax;
+    rightMax = newMax;
+  }
   return arr;
 };
 // @lc code=end

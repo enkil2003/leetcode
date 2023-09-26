@@ -36,7 +36,7 @@
 //   }
 // };
 
-var topKFrequent = function (nums, k) {
+var topKFrequent2 = function (nums, k) {
   const hashMap = {};
   const freq = [];
 
@@ -72,6 +72,20 @@ var topKFrequent = function (nums, k) {
         return res;
       }
     }
+  }
+};
+
+var topKFrequent = function (nums, k) {
+  const hashMap = {};
+  const freq = [];
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    hashMap = (hashMap[num] ?? 0) + 1;
+    freq[i] = [];
+  }
+
+  for (let [number, occurrence] of Object.entries(hashMap)) {
+    freq[occurrence - 1].push(number);
   }
 };
 // @lc code=end

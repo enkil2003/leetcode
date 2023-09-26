@@ -23,11 +23,23 @@
 //   }
 //   return res;
 // };
-var majorityElement = function (nums) {
+var majorityElement2 = function (nums) {
   let count = 0,
     res = 0;
   for (const num of nums) {
     if (count === 0) res = num;
+    count += res === num ? 1 : -1;
+  }
+  return res;
+};
+var majorityElement = function (nums) {
+  let res = 0;
+  let count = 0;
+  for (let i = 0; i < nums.length; i++) {
+    let num = nums[i];
+    if (count === 0) {
+      res = num;
+    }
     count += res === num ? 1 : -1;
   }
   return res;

@@ -23,7 +23,7 @@
 //   }
 //   return missing;
 // };
-var findDisappearedNumbers = function (nums) {
+var findDisappearedNumbers2 = function (nums) {
   for (let n of nums) {
     // como los valores son incrementales
     // comenzando por 1 hasta n, pero puede
@@ -43,5 +43,22 @@ var findDisappearedNumbers = function (nums) {
   }
   return res;
 };
-findDisappearedNumbers([4, 3, 2, 7, 8, 2, 3, 1]);
+
+var findDisappearedNumbers = function (nums) {
+  const hashMap = {};
+  for (let i = 0; i < nums.length; i++) {
+    const key = nums[i];
+    hashMap[key] = i;
+  }
+  //
+  const ans = [];
+  for (let i = 0; i < nums.length; i++) {
+    let needle = i + 1;
+    if (hashMap[needle] === undefined) {
+      ans.push(needle);
+    }
+  }
+  return ans;
+};
+// findDisappearedNumbers([]);
 // @lc code=end

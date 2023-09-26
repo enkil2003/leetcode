@@ -10,7 +10,7 @@
  * @param {string} t
  * @return {boolean}
  */
-var isIsomorphic = function (s, t) {
+var isIsomorphic2 = function (s, t) {
   const map = {};
   const map2 = {};
 
@@ -29,4 +29,27 @@ var isIsomorphic = function (s, t) {
   }
   return true;
 };
+
+var isIsomorphic = function (s, t) {
+  const map = {};
+  const map2 = {};
+
+  for (let i = 0; i < s.length; i++) {
+    const char1 = s.charAt(i);
+    const char2 = t.charAt(i);
+
+    if (map[char1] && map[char1] !== char2) {
+      return false;
+    }
+    if (map2[char2] && map2[char2] !== char1) {
+      return false;
+    }
+
+    map[char1] = char2;
+    map2[char2] = char1;
+  }
+
+  return true;
+};
+// isIsomorphic('egg', 'add');
 // @lc code=end

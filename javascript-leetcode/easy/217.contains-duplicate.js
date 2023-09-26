@@ -9,11 +9,22 @@
  * @param {number[]} nums
  * @return {boolean}
  */
-const containsDuplicate = (nums) => {
+const containsDuplicate2 = (nums) => {
   const hashMap = {};
   for (let i = 0; i < nums.length; i++) {
     if (hashMap[nums[i]]) return true;
     hashMap[nums[i]] = true;
+  }
+  return false;
+};
+
+const containsDuplicate = (nums) => {
+  const set = new Set();
+  for (let i of nums) {
+    if (set.has(i)) {
+      return true;
+    }
+    set.add(i);
   }
   return false;
 };

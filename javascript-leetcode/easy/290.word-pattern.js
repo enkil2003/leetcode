@@ -10,8 +10,8 @@
  * @param {string} s
  * @return {boolean}
  */
-function wordPattern(pattern, s) {
-  const words = s.split(" ");
+function wordPattern2(pattern, s) {
+  const words = s.split(' ');
   if (pattern.length !== words.length) {
     return false;
   }
@@ -38,4 +38,32 @@ function wordPattern(pattern, s) {
   return true;
 }
 
+function wordPattern(pattern, s) {
+  let words = s.split(' ');
+  if (pattern.length !== words.length) return false;
+
+  let wordToChar = new Map();
+  let charToWord = new Map();
+
+  for (let i = 0; i < pattern.length; i++) {
+    const c = pattern[i];
+    const w = words[i];
+
+    if (wordToChar.has(w) && wordToChar.get(w) !== c) {
+      return false;
+    }
+    if (charToWord.has(c) && charToWord.get(c) !== w) {
+      return false;
+    }
+    // wordToChar[w] = c;
+    // charToWord[c] = w;
+    wordToChar.set(w, c);
+    charToWord.set(c, w);
+  }
+  return true;
+
+  // let set1 = new Set(pattern.split(''));
+  // let set2 = new Set(s.split(' '));
+}
+wordPattern('abba', 'dog cat cat dog');
 // @lc code=end

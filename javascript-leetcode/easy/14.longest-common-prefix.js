@@ -9,7 +9,7 @@
  * @param {string[]} strings
  * @return {string}
  */
-var longestCommonPrefix = function (strings) {
+var longestCommonPrefix2 = function (strings) {
   // let minString = strings[0];
   // let shortestString = minString.length;
   // for (const string of strings) {
@@ -22,8 +22,8 @@ var longestCommonPrefix = function (strings) {
   strings.sort((a, b) => a.length - b.length);
   let minString = strings[0];
   let shortestString = minString.length;
-  if (shortestString === 0) return "";
-  let prefix = "";
+  if (shortestString === 0) return '';
+  let prefix = '';
   for (let i = 0; i < shortestString; i++) {
     let found = true;
     const letter = minString.charAt(i);
@@ -42,5 +42,5 @@ var longestCommonPrefix = function (strings) {
   }
   return prefix;
 };
-// longestCommonPrefix(["dog", "racecar", "car"]);
+longestCommonPrefix(['flower', 'flow', 'flight']);
 // @lc code=end
